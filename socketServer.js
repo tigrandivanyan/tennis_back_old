@@ -63,7 +63,7 @@ tcpServer.on('connection', srv => {
     back.tcp.newScores = function(newScores, source){
         kastilIO.emit('newScores', newScores, source, source);
         let reverse = back.reversed(newScores);
-        srv.write(back.tcpEncrypt(["01", id, newScores.player1, newScores.player2, newScores.wonGames1, newScores.wonGames2, reverse ? 1 : 0]))
+        srv.write(back.tcpEncrypt(["01", source, newScores.player1, newScores.player2, newScores.wonGames1, newScores.wonGames2, reverse ? 1 : 0]))
     };
 
     back.tcp.finishSet = function(tourID, source){
